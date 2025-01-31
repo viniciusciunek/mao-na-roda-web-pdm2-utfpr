@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.ciunek.maonaroda",
+            "sha256_cert_fingerprints": [
+                "D6:A9:1B:CF:20:59:2D:76:AB:59:B7:42:E3:79:BE:E8:A3:42:92:F5:E3:CC:53:2F:75:AF:E0:12:A2:53:DB:67"
+            ]
+        }
+    }
+]

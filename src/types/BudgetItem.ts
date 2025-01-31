@@ -5,5 +5,9 @@ export type BudgetItem = {
     quantity: number;
     unit_price: number;
     total_price: number;
-    expand?: unknown;
+    expand?: {
+        product_id: {
+            description: string;
+        };
+    };
 }

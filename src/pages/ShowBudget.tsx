@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Budget } from '../types/Budget';
 import { BudgetItem } from '../types/BudgetItem';
@@ -24,9 +24,7 @@ function ShowBudget() {
 
     const queryParams = new URLSearchParams(window.location.search);
     const budgetId = queryParams.get('budgetId');
-    const token = queryParams.get('token');
-
-    const [status, setStatus] = useState('');
+    // const token = queryParams.get('token');
 
     useEffect(() => {
         if (!budgetId) {
@@ -76,7 +74,7 @@ function ShowBudget() {
         try {
             await budgetRepository.updateBudget(budgetId!, { ...budget, status: 'approved' });
 
-            setStatus('approved')
+            await fetchData();
 
             alert("Orçamento aprovado com sucesso!");
         } catch (err) {
@@ -90,7 +88,8 @@ function ShowBudget() {
         try {
             await budgetRepository.updateBudget(budgetId!, { ...budget, status: 'reproved' });
 
-            setStatus('reproved')
+            await fetchData();
+
 
             alert("Orçamento reprovado!");
         } catch (err) {
@@ -157,7 +156,7 @@ function ShowBudget() {
                         </div>
                         {budgetItems && budgetItems.map((item, index) => (
                             <div key={index} className="flex flex-row items-center justify-between w-full">
-                                <p className="w-1/3 p-2 p-center border font-nunito_xligth">{item.expand.product_id.description}</p>
+                                <p className="w-1/3 p-2 p-center border font-nunito_xligth">{item.expand!.product_id.description}</p>
                                 <p className="w-1/3 p-2 p-center border font-nunito_xligth text-center">{item.quantity}un</p>
                                 <p className="w-1/3 p-2 p-center border font-nunito_xligth text-center">{`R$ ${item.total_price.toFixed(2)}`}</p>
                             </div>
